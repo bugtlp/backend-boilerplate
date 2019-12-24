@@ -15,12 +15,21 @@
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
-    "project": "tsconfig.json",
-    "tsconfigRootDir": "."
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": ".",
+    "createDefaultProgram": true
   },
   "plugins": ["@typescript-eslint", "sonarjs", "prettier"],
   "rules": {
     "import/prefer-default-export": "off",
     "prettier/prettier": "error"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off"
+      }
+    }
+  ]
 }
