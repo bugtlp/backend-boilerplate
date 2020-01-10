@@ -1,9 +1,10 @@
 import { Injectable, Inject } from '@nestjs/common';
 import * as Knex from 'knex';
+import { DB_CONNECTION } from '../shared/db/constants';
 
 @Injectable()
 export class AuthService {
-  constructor(@Inject('Knex') readonly knex: Knex) {}
+  constructor(@Inject(DB_CONNECTION) readonly knex: Knex) {}
 
   /**
    * Find user in database by username/password

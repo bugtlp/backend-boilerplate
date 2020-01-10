@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Knex from 'knex';
 
+import { DB_CONNECTION } from './constants';
+
 require('dotenv').config();
 
 const defaultConnectionConfig = {
@@ -11,7 +13,7 @@ const defaultConnectionConfig = {
   user: process.env.DB_USER,
 };
 
-export function knexFactory(connectionConfig: Knex.PgConnectionConfig = defaultConnectionConfig): Knex {
+export function connectionFactory(connectionConfig: Knex.PgConnectionConfig = defaultConnectionConfig): Knex {
   const config: Knex.Config = {
     client: 'pg',
     connection: connectionConfig,
@@ -25,7 +27,7 @@ export function knexFactory(connectionConfig: Knex.PgConnectionConfig = defaultC
   return Knex(config);
 }
 
-export const knexProvider = {
-  provide: 'Knex',
-  useFactory: knexFactory,
+export const connectionProvider = {
+  provide: DB_CONNECTION,
+  useFactory: connectionFactory,
 };
