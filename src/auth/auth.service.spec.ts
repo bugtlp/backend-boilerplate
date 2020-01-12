@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
-import { DB_CONNECTION } from '../shared/db/constants';
+import { db } from '../shared';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -14,7 +14,7 @@ describe('AuthService', () => {
         AuthService,
         LocalStrategy,
         {
-          provide: DB_CONNECTION,
+          provide: db.Connection,
           useValue: {
             select: jest.fn(),
           },

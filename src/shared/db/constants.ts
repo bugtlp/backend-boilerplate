@@ -1,1 +1,1 @@
-export const DB_CONNECTION = 'DB_CONNECTION';
+export const DB_CONNECTION = Symbol.for('Shared.db.Connection');

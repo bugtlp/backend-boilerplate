@@ -1,10 +1,9 @@
 import { Injectable, Inject } from '@nestjs/common';
-import * as Knex from 'knex';
-import { DB_CONNECTION } from '../shared/db/constants';
+import { db } from '../shared';
 
 @Injectable()
 export class AuthService {
-  constructor(@Inject(DB_CONNECTION) readonly knex: Knex) {}
+  constructor(@Inject(db.Connection) readonly queryBuilder: db.QueryBuilder) {}
 
   /**
    * Find user in database by username/password
@@ -13,7 +12,7 @@ export class AuthService {
    */
   async validateUser(username: string, password: string): Promise<any> {
     // Template request to database
-    return this.knex('users')
+    return this.queryBuilder('users')
       .first('*')
       .where({ name: username, password });
   }

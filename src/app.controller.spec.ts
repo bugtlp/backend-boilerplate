@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DB_CONNECTION } from './shared/db/constants';
+import { db } from './shared';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -12,7 +12,7 @@ describe('AppController', () => {
       providers: [
         AppService,
         {
-          provide: DB_CONNECTION,
+          provide: db.Connection,
           useValue: {
             select: jest.fn(),
           },
