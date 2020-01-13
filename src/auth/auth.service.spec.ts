@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
-import { db } from '../shared';
+import * as db from '../db';
 
 describe('AuthService', () => {
   let service: AuthService;

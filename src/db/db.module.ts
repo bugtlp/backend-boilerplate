@@ -1,7 +1,8 @@
-import { Module } from '@nestjs/common';
+import { Module, Global } from '@nestjs/common';
 
 import { connectionProvider } from './connection.provider';
 
+@Global()
 @Module({
   providers: [connectionProvider],
   exports: [connectionProvider],
