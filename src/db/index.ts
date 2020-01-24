@@ -1,3 +1,3 @@
 export * from './db.module';
-export { DB_CONNECTION as Connection } from './constants';
-export { QueryBuilder } from './interfaces';
+export { CONNECTION_SERVICE_TOKEN } from './constants';
+export { Connection } from './interfaces';

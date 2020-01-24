@@ -1,19 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as Knex from 'knex';
 
-import { DB_CONNECTION } from './constants';
+import { CONNECTION_SERVICE_TOKEN } from './constants';
+import { ConnectionService } from './connection.service';
 
 require('dotenv').config();
 
 const defaultConnectionConfig = {
-  database: process.env.DB_NAME,
-  host: process.env.DB_HOST,
-  password: process.env.DB_PASSWORD,
+  database: String(process.env.DB_NAME),
+  host: String(process.env.DB_HOST),
+  password: String(process.env.DB_PASSWORD),
   port: Number(process.env.DB_PORT) || 5432,
-  user: process.env.DB_USER,
+  user: String(process.env.DB_USER),
 };
 
-export function connectionFactory(connectionConfig: Knex.PgConnectionConfig = defaultConnectionConfig): Knex {
+export function connectionFactory(
+  connectionConfig: Knex.ConnectionConfig = defaultConnectionConfig,
+): ConnectionService {
   const config: Knex.Config = {
     client: 'pg',
     connection: connectionConfig,
@@ -24,10 +27,10 @@ export function connectionFactory(connectionConfig: Knex.PgConnectionConfig = de
     },
   };
 
-  return Knex(config);
+  return new ConnectionService(Knex(config));
 }
 
 export const connectionProvider = {
-  provide: DB_CONNECTION,
+  provide: CONNECTION_SERVICE_TOKEN,
   useFactory: connectionFactory,
 };

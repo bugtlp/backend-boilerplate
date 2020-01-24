@@ -1,1 +1,1 @@
-export const DB_CONNECTION = 'DbModule.Connection';
+export const CONNECTION_SERVICE_TOKEN = 'DbModule.Connection';
