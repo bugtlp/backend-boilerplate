@@ -14,9 +14,11 @@ describe('AuthService', () => {
         AuthService,
         LocalStrategy,
         {
-          provide: db.Connection,
+          provide: db.CONNECTION_SERVICE_TOKEN,
           useValue: {
-            select: jest.fn(),
+            query: (): any => ({
+              select: jest.fn(),
+            }),
           },
         },
       ],
