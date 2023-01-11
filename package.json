@@ -27,7 +27,7 @@
     "@nestjs/passport": "6.1.1",
     "@nestjs/platform-express": "6.10.8",
     "dotenv": "8.2.0",
-    "knex": "0.19.5",
+    "knex": "2.4.0",
     "passport": "0.4.1",
     "passport-local": "1.0.0",
     "pg": "7.15.1",
